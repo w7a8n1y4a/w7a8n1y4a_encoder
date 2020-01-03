@@ -64,8 +64,12 @@ void w7a8n1y4a_encoder::tick(){
       button_allow_double_flag = 1;
   }
   if(sw_state && button_flag && millis_timer - button_timer > timeout_debounce_click){
-    button_state = 2;
-    button_flag = 0;
+    if(button_long_flag_double){
+      button_long_flag_double = 0;
+    }else{
+      button_state = 2;
+    }
+      button_flag = 0;
     button_timer = millis_timer;
     if(button_allow_double_flag && !button_double_flag ){
       button_double_flag = 1;
@@ -84,10 +88,10 @@ void w7a8n1y4a_encoder::tick(){
     if(!sw_state){
       button_state = 4;
       button_long_flag = 1;
-    }else{
-      button_timer = millis_timer;
+      button_flag = 1;
+      button_long_flag_double = 1;
     }
-  } 
+  }
 }
 
 bool w7a8n1y4a_encoder::left(){
@@ -157,7 +161,7 @@ bool w7a8n1y4a_encoder::fast_press_right(){
 }
 
 bool w7a8n1y4a_encoder::press(){
-  if(button_state == 1){
+  if(button_state == 2){
     button_state = 0;
     return 1;
   }else{
@@ -181,8 +185,3 @@ bool w7a8n1y4a_encoder::double_press(){
     return 0;
   }
 }
-
-
-
-
-
