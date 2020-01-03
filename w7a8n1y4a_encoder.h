@@ -42,6 +42,7 @@ private:
     bool button_double_flag = 0;
     bool button_allow_double_flag = 0;
     bool button_long_flag = 0;
+    bool button_long_flag_double = 0;
 
 
 
