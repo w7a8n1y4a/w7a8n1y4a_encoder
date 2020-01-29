@@ -25,10 +25,10 @@ public:
 private:
     uint8_t _CLK = 0, _DT = 0, _SW = 0;
 
-    uint8_t timeout_long_click = 500;
-    uint8_t timeout_double_click = 200;
-    uint8_t timeout_debounce_click = 50;
-    uint8_t timeout_fast_turn = 30;
+    uint32_t timeout_long_click = 300;
+    uint32_t timeout_double_click = 150;
+    uint32_t timeout_debounce_click = 50;
+    uint32_t timeout_fast_turn = 30;
 
     uint8_t encoder_state = 0;
     uint8_t button_state = 0;
